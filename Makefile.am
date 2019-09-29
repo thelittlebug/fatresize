@@ -5,7 +5,7 @@ man_MANS = fatresize.1
 INCLUDES = $(PARTED_CFLAGS)
 
 fatresize_SOURCES = fatresize.c
-fatresize_LDADD = $(PARTED_LIBS)
+fatresize_LDADD = $(PARTED_LIBS) -lparted-fs-resize
 
 EXTRA_DIST = AUTHORS CREDITS ChangeLog NEWS README \
 	fatresize.spec $(man_MANS)
