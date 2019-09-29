@@ -39,6 +39,8 @@ PKG_CHECK_EXISTS([libparted >= 2.4],
 			    [Define if you have at least libparted 2.4.])])
 PKG_CHECK_EXISTS([libparted >= 3.1],
 		 [PARTED_LIBS="-lparted-fs-resize $PARTED_LIBS"])
+		 
+PARTED_LIBS="-lparted-fs-resize $PARTED_LIBS"
 
 AC_SUBST(PARTED_LIBS)
 
