@@ -32,15 +32,13 @@ CFLAGS="$CFLAGS -D_FILE_OFFSET_BITS=${ac_cv_sys_file_offset_bits}"
 
 dnl libparted
 # hack
-LIBS="$LIBS -ldl"
+LIBS="$LIBS -ldl -lparted-fs-resize"
 PKG_CHECK_MODULES([PARTED], [libparted >= 1.6.0])
 PKG_CHECK_EXISTS([libparted >= 2.4],
 		 [AC_DEFINE([LIBPARTED_GT_2_4], [1],
 			    [Define if you have at least libparted 2.4.])])
 PKG_CHECK_EXISTS([libparted >= 3.1],
 		 [PARTED_LIBS="-lparted-fs-resize $PARTED_LIBS"])
-		 
-PARTED_LIBS="-lparted-fs-resize $PARTED_LIBS"
 
 AC_SUBST(PARTED_LIBS)
 
