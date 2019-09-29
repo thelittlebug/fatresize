@@ -22,6 +22,7 @@
 #ifndef DEBUG
 #define DEBUG 1
 #endif
+#define LIBPARTED_GT_2_4 1
 
 #include <ctype.h>
 #include <errno.h>
@@ -39,6 +40,7 @@
 
 #include "config.h"
 
+#ifdef LIBPARTED_GT_2_4
 #define FAT_ASSERT(cond, action)		\
     do {					\
 	if (!(cond)) {				\
@@ -46,6 +48,9 @@
 	    action;				\
 	}					\
     } while (0)
+#else
+#define FAT_ASSERT(cond, action) PED_ASSERT(cond, action)
+#endif
 
 #define FAT32MIN	1024*1024*512
 #define MAX_SIZE_STR	"max"
